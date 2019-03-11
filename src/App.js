@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import BlogEntryForm from './Forms/blogEntryForm';
+import BlogEntryTable from './Tables/blogEntryTable';
 
-class App extends Component {
-  render() {
+const App = props => {
+    const entriesData = [{id: 1, title: "React js", content: "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.", date: "2019-03-11"}]
+    const [entries, setEntries] = useState(entriesData);
+
+    const addEntry = entry => {
+      entry.id = entries.length + 1;
+      entry.date = new Date().toISOString().slice(0,10); 
+      setEntries([...entries, entry]);
+    }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div class="medium-container">
+        <div class="flex-row">
+          <div class="flex-small"><BlogEntryForm addEntry={addEntry} /></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-small"><BlogEntryTable entries={entries} /> </div>
+        </div>
       </div>
+      
     );
-  }
 }
 
 export default App;
