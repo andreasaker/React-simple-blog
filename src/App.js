@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import BlogEntryForm from './Forms/blogEntryForm';
-import BlogEntryTable from './Tables/blogEntryTable';
+import React from 'react';
+import Blog from './Pages/blog';
+import About from './Pages/about';
+import Contact from './Pages/contact';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+const NavBar = () => (
+    <nav class="navBar">
+     <Link to="/blog/"><button class="square-button">Blog</button></Link>
+     <Link to="/about/"><button class="square-button">About</button></Link>
+     <Link to="/contact/"><button class="square-button">Contact</button></Link>
+      
+    </nav>
+    
+)
+
 
 const App = props => {
-    const entriesData = [{id: 1, title: "React js", content: "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.", date: "2019-03-11"}]
-    const [entries, setEntries] = useState(entriesData);
-
-    const addEntry = entry => {
-      entry.id = entries.length + 1;
-      entry.date = new Date().toISOString().slice(0,10); 
-      setEntries([...entries, entry]);
-    }
-
-    return (
-      <div class="medium-container">
-        <div class="flex-row">
-          <div class="flex-small"><BlogEntryForm addEntry={addEntry} /></div>
-        </div>
-        <div class="flex-row">
-          <div class="flex-small"><BlogEntryTable entries={entries} /> </div>
-        </div>
+    return(
+    <Router>
+    <div class="medium-container">
+      <div class="flex-row">
+        <NavBar />
       </div>
-      
+      <Route exact path="/" component={Blog} />
+      <Route path="/blog/" component={Blog} />
+      <Route path="/about/" component={About} />
+      <Route path="/contact/" component={Contact} />
+    </div>
+    </Router>
     );
 }
 

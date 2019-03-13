@@ -377,7 +377,10 @@ dd {
 @media (min-width: 1000px) {
   .flex-large {
     flex: 1 1 0;
-    margin-bottom: 0; } }
+    margin-bottom: 0; } 
+  
+  .padding-top-small {padding-top: 0.5em;}
+  }
 
 /* Helpers
   =============== */
@@ -540,6 +543,7 @@ a.round-button {
 a.square-button {
   border-radius: 0; }
 
+
 .full-button,
 a.full-button {
   display: block;
@@ -663,5 +667,32 @@ caption {
 
 /* Navigation
   =============== */
+.navBar ul{
+  list-style: none;
+}
+  
+.navBar ul li{
+  float: left;
+  margin-right: 1em;
+}
+
+.navBar a {
+  color: white;
+}
+
+.contacts ul{
+  list-style: none;
+}
+
+.card{
+  margin-right: 0.5em;
+}
+
+.card-end{
+  margin-right: 0em;
+}
+
+
+
 /* Layout
   =============== */
